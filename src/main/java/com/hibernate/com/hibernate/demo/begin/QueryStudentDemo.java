@@ -1,4 +1,4 @@
-package com.hibernate.com.hibernate.demo;
+package com.hibernate.com.hibernate.demo.begin;
 
 
 import com.hibernate.com.hibernate.demo.entity.Student;

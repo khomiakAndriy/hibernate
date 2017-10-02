@@ -1,4 +1,4 @@
-package com.hibernate.com.hibernate.demo;
+package com.hibernate.com.hibernate.demo.begin;
 
 
 import com.hibernate.com.hibernate.demo.entity.Student;
@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class PrimaryKeyDemo {
+public class UpdateStudentDemo {
     public static void main(String[] args) {
         // create session factory
         SessionFactory factory = new Configuration()
@@ -15,24 +15,32 @@ public class PrimaryKeyDemo {
                 .buildSessionFactory();
 
         // create session
-        Session session = factory.getCurrentSession();
-        try {
-            System.out.println("Creating 3 student objects...");
-            Student student1 = new Student("Nata", "Khomiak", "a@gmail.com");
-            Student student2 = new Student("Kristi", "Khomiak", "b@gmail.com");
-            Student student3 = new Student("Tolik", "Khomiak", "c@gmail.com");
-            session.beginTransaction();
 
-            System.out.println("Saving the student");
-            session.save(student1);
-            session.save(student2);
-            session.save(student3);
+        try {
+            Session session = factory.getCurrentSession();
+            session.beginTransaction();
+            int studentId = 6;
+            Student myStudent = session.get(Student.class, studentId);
+            myStudent.setFirstName("Yuriy");
+            myStudent.setLastName("Kuzko");
+            myStudent.setEmail("kuzko@gmail.com");
+
 
             session.getTransaction().commit();
             System.out.println("Done!");
 
+            session = factory.getCurrentSession();
+            session.beginTransaction();
+
+            session.createQuery("update Student set email = 'all@gmail.com'").executeUpdate();
+
+
+            session.getTransaction().commit();
+
+
         } finally {
             factory.close();
         }
+
     }
 }

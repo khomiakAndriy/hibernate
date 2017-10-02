@@ -17,6 +17,19 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private String hobby;
 
+    // Add instance for bi-derectional
+    // for deleting operation only instDetail instance select all CascadeTypy with out ALL
+    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    private Instructor instructor;
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     public InstructorDetail(){}
 
     public InstructorDetail(String youtubeChannel, String hobby) {

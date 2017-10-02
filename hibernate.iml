@@ -5,7 +5,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="a.xml" value="afc05cd2-ced6-4d70-9069-c47b03282f51" />
-          <unit-entry name="hibernate.cfg.xml" value="21771a59-771f-418f-87bf-d77672b7f32e" />
+          <unit-entry name="hibernate.cfg.xml" value="ab748835-051d-4352-a543-402523de460e" />
         </datasource-map>
         <naming-strategy-map>
           <unit-entry name="hibernate.cfg.xml" />
